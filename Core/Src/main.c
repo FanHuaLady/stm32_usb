@@ -15,7 +15,7 @@ int main(void)
 	
 	while (1)
 	{
-		USB_printf(">>>\r\n%s\r\n", a);
+		// USB_printf(">>>\r\n%s\r\n", a);
 		HAL_Delay(500);
 	}
 }

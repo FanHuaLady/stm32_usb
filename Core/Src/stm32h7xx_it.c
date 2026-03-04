@@ -201,78 +201,13 @@ void SysTick_Handler(void)
 /* please refer to the startup file (startup_stm32h7xx.s).                    */
 /******************************************************************************/
 
-/**
-  * @brief This function handles FDCAN1 interrupt 0.
-  */
-void FDCAN1_IT0_IRQHandler(void)
-{
-  /* USER CODE BEGIN FDCAN1_IT0_IRQn 0 */
-
-  /* USER CODE END FDCAN1_IT0_IRQn 0 */
-  //HAL_FDCAN_IRQHandler(&hfdcan1);
-  /* USER CODE BEGIN FDCAN1_IT0_IRQn 1 */
-
-  /* USER CODE END FDCAN1_IT0_IRQn 1 */
-}
-
-/**
-  * @brief This function handles FDCAN1 interrupt 1.
-  */
-void FDCAN1_IT1_IRQHandler(void)
-{
-  /* USER CODE BEGIN FDCAN1_IT1_IRQn 0 */
-
-  /* USER CODE END FDCAN1_IT1_IRQn 0 */
-  //HAL_FDCAN_IRQHandler(&hfdcan1);
-  /* USER CODE BEGIN FDCAN1_IT1_IRQn 1 */
-
-  /* USER CODE END FDCAN1_IT1_IRQn 1 */
-}
-
-/**
-  * @brief This function handles TIM3 global interrupt.
-  */
-void TIM3_IRQHandler(void)
-{
-  /* USER CODE BEGIN TIM3_IRQn 0 */
-
-  /* USER CODE END TIM3_IRQn 0 */
-  //HAL_TIM_IRQHandler(&htim3);
-  /* USER CODE BEGIN TIM3_IRQn 1 */
-
-  /* USER CODE END TIM3_IRQn 1 */
-}
-
-/**
-  * @brief This function handles TIM4 global interrupt.
-  */
-void TIM4_IRQHandler(void)
-{
-  /* USER CODE BEGIN TIM4_IRQn 0 */
-
-  /* USER CODE END TIM4_IRQn 0 */
-	// HAL_TIM_IRQHandler(&htim4);
-  /* USER CODE BEGIN TIM4_IRQn 1 */
-
-  /* USER CODE END TIM4_IRQn 1 */
-}
-
-/**
-  * @brief This function handles FDCAN calibration unit interrupt.
-  */
-void FDCAN_CAL_IRQHandler(void)
-{
-  /* USER CODE BEGIN FDCAN_CAL_IRQn 0 */
-
-  /* USER CODE END FDCAN_CAL_IRQn 0 */
-  // HAL_FDCAN_IRQHandler(&hfdcan1);
-  /* USER CODE BEGIN FDCAN_CAL_IRQn 1 */
-
-  /* USER CODE END FDCAN_CAL_IRQn 1 */
-}
-
+// 这里是中断
 void OTG_HS_IRQHandler(void)
-{
+{	
+	// 这个函数触发会调用 PCD_EP_OutXfrComplete_int
+	// 上个函数会调用 HAL_PCD_DataOutStageCallback
+	// 上个函数会调用 USBD_LL_DataOutStage
+	// 上个函数会调用 CDC_Receive_FS
     HAL_PCD_IRQHandler(&hpcd_USB_OTG_HS);
 }
 /* USER CODE BEGIN 1 */

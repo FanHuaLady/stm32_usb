@@ -84,31 +84,22 @@ void HAL_PCD_SetupStageCallback(PCD_HandleTypeDef *hpcd)
 static void PCD_DataOutStageCallback(PCD_HandleTypeDef *hpcd, uint8_t epnum)
 #else
 void HAL_PCD_DataOutStageCallback(PCD_HandleTypeDef *hpcd, uint8_t epnum)
-#endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
+#endif
 {
-  USBD_LL_DataOutStage((USBD_HandleTypeDef*)hpcd->pData, epnum, hpcd->OUT_ep[epnum].xfer_buff);
+	// 
+	USBD_LL_DataOutStage((USBD_HandleTypeDef*)hpcd->pData, epnum, hpcd->OUT_ep[epnum].xfer_buff);
 }
 
-/**
-  * @brief  Data In stage callback.
-  * @param  hpcd: PCD handle
-  * @param  epnum: Endpoint number
-  * @retval None
-  */
+
 #if (USE_HAL_PCD_REGISTER_CALLBACKS == 1U)
 static void PCD_DataInStageCallback(PCD_HandleTypeDef *hpcd, uint8_t epnum)
 #else
 void HAL_PCD_DataInStageCallback(PCD_HandleTypeDef *hpcd, uint8_t epnum)
-#endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
+#endif
 {
   USBD_LL_DataInStage((USBD_HandleTypeDef*)hpcd->pData, epnum, hpcd->IN_ep[epnum].xfer_buff);
 }
 
-/**
-  * @brief  SOF callback.
-  * @param  hpcd: PCD handle
-  * @retval None
-  */
 #if (USE_HAL_PCD_REGISTER_CALLBACKS == 1U)
 static void PCD_SOFCallback(PCD_HandleTypeDef *hpcd)
 #else
@@ -118,11 +109,6 @@ void HAL_PCD_SOFCallback(PCD_HandleTypeDef *hpcd)
   USBD_LL_SOF((USBD_HandleTypeDef*)hpcd->pData);
 }
 
-/**
-  * @brief  Reset callback.
-  * @param  hpcd: PCD handle
-  * @retval None
-  */
 #if (USE_HAL_PCD_REGISTER_CALLBACKS == 1U)
 static void PCD_ResetCallback(PCD_HandleTypeDef *hpcd)
 #else
